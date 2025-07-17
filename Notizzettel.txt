@@ -257,3 +257,16 @@ Are .NET // Qt Facades or Proxies ???
 Proxy: SAME INTERFACE
 
 =====================================================
+
+Decorator Pattern:
+
+a) Wrapper Pattern
+
+b) to decorate: Works at Runtime
+
+c) to decorate ==> to add new things ==> specialize an existing class 
+
+   => Compile Time
+
+Issue: It is a Runtime Pattern.
+

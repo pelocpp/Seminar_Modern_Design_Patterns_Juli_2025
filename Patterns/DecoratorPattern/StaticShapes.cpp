@@ -81,7 +81,7 @@ namespace StaticDecoration {
     // ---------------------------------------------------------------------------
     // ---------------------------------------------------------------------------
 
-    // template argument must be derived from IShape
+    // template argument must be derived from IShape  // C++ 20
     template <typename T>
     concept ConceptIShapeObject = std::derived_from<T, IShape>;
 

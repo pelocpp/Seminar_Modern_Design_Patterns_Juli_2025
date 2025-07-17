@@ -96,7 +96,8 @@ public:
 };
 
 /**
- * Need one more Decorator class to demonstrate nested execution of decorator objects
+ * Need one more Decorator class to demonstrate nested execution
+ * of decorator objects
  */
 class ConcreteDecoratorC final : public DecoratorBase {
 public:
@@ -170,8 +171,8 @@ void test_conceptual_example_02() {
     */
 
     std::shared_ptr<IComponent> decorator {
-    std::make_shared<ConcreteDecoratorB>(
-        std::make_shared<ConcreteDecoratorA>(component))
+        std::make_shared<ConcreteDecoratorB>(
+            std::make_shared<ConcreteDecoratorA>(component))
     };
 
     std::cout << "Client: Same decorated component - written in a more compact syntax:" << std::endl;
@@ -221,7 +222,7 @@ void test_conceptual_example_03() {
     // run-time dependent decorator
     std::shared_ptr<IComponent> decorator;
 
-    if (true)   // <== change 'true' to 'false'
+    if (false)   // <== change 'true' to 'false'
     {
         std::shared_ptr<IComponent> decorator1{ std::make_shared<ConcreteDecoratorA>(component) };
         decorator = std::make_shared<ConcreteDecoratorB>(decorator1);
