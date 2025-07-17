@@ -1,0 +1,259 @@
+// =================================
+
+Design Pattern in C++
+
+Peter Loos
+
+https://github.com/pelocpp
+
+peter.loos@gmx.de
+
+// =================================
+
+10.30
+
+12.30
+
+16.45  // 17.00
+
+17.00
+
+// =================================
+
+
+Pre Requisites:
+
+== interfaces
+== abstract classes
+
+// =================================
+
+Conceptual Example
+
+// =================================
+
+Dennis Ritchie: C 
+
+"A Programmer knows what he does" // Philosophy
+
+Opposite: Programming robust, secure, stable, ....
+
+// =================================
+
+Another Child Class:
+
+Is this an Extension?
+
+=> This is an Specialization.
+
+class X extends Y
+
+class X : public Y
+
+====================================
+
+Data Formats.
+
+xml: convert from XML to JSON
+
+json
+
+======================================
+
+Sense of 'clientCode'
+
+Frontier between Client and Application / Pattern
+
+Transparency: interchangeable for "real" targets or "adapter" targets
+
+YAML
+
+Answer 1:
+
+0) We have an XML_Adapter
+
+a) We need a second Adapter class: YAML_Adapter
+
+Answer 2:
+
+We write an adapter for YAML
+
+JSON <=> XML
+
+JSON <=> YAML <=> XML
+
+============================================
+
+Eager vs. Lazy:
+
+Eager Programming: Do, what you need to do, RIGHT NOW !!!
+
+Lazy Programming:  Do, what you need to do, later - 
+                   Do it, when you REALLY need to do it !!!
+
+Bitmaps.
+
+============================================
+
+Understanding:
+
+Difference between Adapter Pattern and Proxy Pattern:
+
+Both deal with a "hidden" object:
+
+== Adapter: connecting incompatible objects / 
+            providing a kind of handshake
+
+== Proxy:   use the "hidden" object in the same fashion like 
+            the original object.
+
+            A possibility to move in-between client and real object.
+
+            But: Establish possibilities, to control the access
+            of the real object depending on some events.
+
+            But: The client should not really see these decisions.
+
+=======================================================
+
+Template Method Pattern:
+
+Tetris Game:
+
+7 Figures:
+
+== Moving them is (similar) identical
+
+== Decisions (can I really move) depends on the figure.
+
+=======================================================
+
+Template Method Pattern in our own words:
+
+== When can I use this Pattern?
+
+== The is a common structure !!!
+            ----------------
+
+   There is a common Goal - this goal should not be broken / ignored .
+
+== There are differences in the details
+
+== The details should be solved by derived classes
+
+=======================================================
+
+Observer Pattern:
+================
+
+“To receive notifications when events occur.”
+
+Object: Provides information:  Whether Data, Shares Values, User Action, 
+
+a) To retrieve information: Polling - Less Performant
+
+==> Event Based Notification
+
+==> C#: Events are part of the Language.
+
+==> C++: Events are NOT part of the Language.
+
+Proposal: Observer Pattern.
+
+Wording:
+
+Object, that holds the requested state: 
+
+         Event Source, Subject, Observable
+
+Objects, that want to become notified:
+
+         Event Client, Observer, Event Sink
+
+Can I use a (Singular) Event Sink for multiple Event Sources ?
+
+Answer:
+
+    class IObserver {
+    public:
+        virtual void update(Sender source, const std::string&) = 0;
+    };
+
+======================================================
+
+Event Source:  How to create: std::shared_ptr.  (Owner)
+
+Event Client(s):  How to create: std::shared_ptr.  (several Owner)
+
+An Event Client has knowledge of an Event Source:
+
+An Event Source has knowledge of Event Clients: List of Clients.
+
+List of Clients =====>  std::weak_ptr.
+
+===> Traversing the list of std::weak_ptr's:
+
+                 lock upon a std::weak_ptr:   nullptr
+
+======================================================
+
+Do I want to learn the std::weak Pointer ?
+
+Yes or no ???
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/WeakPtr/WeakPtr.md
+
+std::shared_ptr<>
+
+Issue:  // Problem:
+
+The shared_ptr does not "work" always !!!
+
+The delete is not called always ??????????
+
+======================================================
+
+How does std::shared_ptr work ???
+
+a) std::make_shared
+
+b) There will be allocated memory on the heap
+
+c) You can have several shared pointers accessing the SAME address on the heap
+
+   // sp1 = sp2;
+
+d) What does the destructor do of an std::shared_ptr object:
+
+   decrement the reference count by 1
+
+e) What happens, if the reference count switches from 1 to 0: delete ptr;
+
+
+
+===================================================
+
+To search a weak pointer in a list:
+
+if ( wp == list[index]  )
+   remove (wp);
+
+   weak pointer DO NOT HAVE operator==
+
+=====================================================
+
+Windows API:  Win32   // C - Interface
+
+Facade:  .NET Framework:
+
+   // C#
+
+   // All of the Win32 API is wrapped by comfortable C# classes 
+
+   // Object-Oriented View / Facade upon the Win32 - API
+
+Are .NET // Qt Facades or Proxies ???
+
+Proxy: SAME INTERFACE
+
+=====================================================
