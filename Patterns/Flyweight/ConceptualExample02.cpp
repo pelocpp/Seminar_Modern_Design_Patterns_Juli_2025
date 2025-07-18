@@ -99,7 +99,10 @@ namespace ConceptualExample02 {
     class FlyweightFactory
     {
     private:
-        std::unordered_map<std::string, std::shared_ptr<Flyweight>> m_flyweights;
+        // Hash Table:
+        // Key:    Computing a Key from a SharedState // to keep things simple: std::string
+        // Value:  ===> Flyweight
+        std::unordered_map<std::string, std::shared_ptr<Flyweight>> m_flyweights; 
 
         /**
          * Returns a Flyweight's string hash for a given state.
@@ -205,11 +208,11 @@ static void test_conceptual_example_02_a() {
     {
         /* std::initializer_list of SharedState-objects
         */
-        {"Chevrolet", "Camaro2018", "pink"},
-        {"Mercedes Benz", "C300", "black"},
-        {"Mercedes Benz", "C500", "red"},
-        {"BMW", "M5", "red"},
-        {"BMW", "X6", "white"}
+        { "Chevrolet", "Camaro2018", "pink" },
+        { "Mercedes Benz", "C300", "black" },
+        { "Mercedes Benz", "C500", "red" },
+        { "BMW", "M5", "red" },
+        { "BMW", "X6", "white" }
     };
 
     factory.listFlyweights();
@@ -261,11 +264,11 @@ static void test_conceptual_example_02_b() {
 
     addCarToDatabase(
         factory,
-        "James Doe",
-        "CL234IR",
-        "BMW",
-        "M5",         // <== this car variant always exists
-        "red");
+        "James Doe",  // seldom // unique
+        "CL234IR",    // unique 
+        "BMW",        // often
+        "M5",         // often           // <== this car variant always exists
+        "red");       // often
 
     addCarToDatabase(
         factory,

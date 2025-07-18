@@ -29,7 +29,7 @@ namespace ConceptualExample01
 
         virtual ~Prototype() {}
         
-        virtual Prototype* clone() const = 0;
+        virtual Prototype* clone() const = 0;  // abstract clone method
 
     public:
         int getId() const { return m_id; }
@@ -43,15 +43,16 @@ namespace ConceptualExample01
 
         // Note: Return Type = Type of base class - 
         // but 'virtual ConcretePrototype* clone()' compiles too
-        virtual Prototype* clone() const override
+        virtual ConcretePrototype* clone() const override
         {
-            return new ConcretePrototype{ *this };
+            return new ConcretePrototype{ *this };  // automatically created
+                                                // copy c'tor of this class
         }
     };
 
     static void clientCode(Prototype* original)
     {
-        Prototype* copy{ original->clone() };
+        Prototype* copy = original->clone();
 
         std::cout << "Copy: " << copy->getId() << std::endl;
 
@@ -99,7 +100,7 @@ void test_conceptual_example_01()
 {
     using namespace ConceptualExample01;
 
-    Prototype* prototype{ new ConcretePrototype { 123 } };
+    Prototype* prototype = new ConcretePrototype { 123 };
 
     clientCode(prototype);
 

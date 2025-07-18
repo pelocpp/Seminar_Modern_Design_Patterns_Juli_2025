@@ -154,6 +154,10 @@ namespace StrategyConceptualExample {
     {
         std::println("Client: Strategy is set to 'Normal Sorting':");
 
+        // a) prepare / initialize a couple of data / parameters
+
+        // b) pass some of these data to a strategy
+
         Context context{ std::make_unique<ConcreteStrategyA>() };
         context.doSomeBusinessLogic();
         std::println();

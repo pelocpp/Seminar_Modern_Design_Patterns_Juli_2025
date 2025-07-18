@@ -35,8 +35,10 @@ namespace ConceptualExampleBuilder01 {
 
         virtual void buildPartA() = 0;
         virtual void buildPartB() = 0;
+
         virtual std::shared_ptr<Product> getProduct() = 0;
     };
+
 
     class Director
     {

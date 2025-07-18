@@ -10,6 +10,8 @@ static void test_person_builder_example_01()
 
     PersonBuilder builder{ Person::create("Jack") };
 
+    // fluent programming style // functional programming languages
+
     builder
         .lives("Great Britain")
         .at("17 Sloane Street")
@@ -19,7 +21,7 @@ static void test_person_builder_example_01()
         .with("Software Manufactur")
         .as_a("Consultant");
 
-    Person p{ builder };
+    Person p = builder;  // type conversion operator: PersonBuilder => Person
 
     std::cout << p << std::endl;
 }

@@ -1,6 +1,7 @@
 void main_weak_pointer();
+void main_lambdas();
 
 int main ()
 {
-	main_weak_pointer();
+	main_lambdas();
 }

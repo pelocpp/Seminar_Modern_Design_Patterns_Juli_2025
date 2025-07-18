@@ -270,3 +270,170 @@ c) to decorate ==> to add new things ==> specialize an existing class
 
 Issue: It is a Runtime Pattern.
 
+=====================================================
+
+Strategy:
+
+Answer:
+
+a) Client / Context
+
+b) Concrete Strategy Objects
+
+======================================================
+
+Calling a Function:
+
+a) Via (indirectly) the help of an interface
+
+b) std::function:
+
+   Wrapper for functions // Plural
+
+=====================================================
+
+Factory:
+
+the term "factory" is used in a lot of different situations.
+
+== Simple Factory : this is not really a pattern (not a part of the book of Gamma)
+
+== Factory Method Pattern (Method)
+
+== Abstract Factory Pattern (Classes)
+
+========================================================
+
+Java:
+
+UI Frameworks / Libraries:
+
+Swing:
+
+Change / parametrisize the Look & Feel:
+
+== Motif L&F
+== Win32 L&F
+
+== Metal  L&F
+
+=====================================================
+
+Builder:
+
+a) What is it ???
+
+b) Side effect:  Named Arguments Idiom / Pattern in C++.
+
+
+What's the Problem:   Constructors // new :
+
+==> A Constructor is NOT able to really construct the object COMPLETELY.
+
+==> I need more steps so that the object can be passed to a client.
+
+================================================
+
+Create a copy of an object 
+
+   ==> C++:  Copy Constructor
+
+What's the Problem ????????????????
+
+Create a copy of an object by passing a pointer to its base type.
+
+Example:
+
+Chess:  
+
+Figures* [8][8] GameBoard;
+
+std::shared_ptr<Figures> [8][8] GameBoard;
+
+Figure: Pawn, King, Queen, Knight
+
+Figure: Base Class 
+
+Derived, concrete Classes:  Pawn, King, Queen, Knight
+
+Figures* [8][8] GameBoard;
+
+Compute the next step: 
+
+How: I need a copy of the game board to make trials for the next step.
+
+I make a copy of    Figures* [8][8] GameBoard;  // base class pointers
+
+for (int i = 0; i < 64; ++i)
+  
+  board_copy[i] = GameBoard[i];  // I DON't want the address copied
+
+                           I want a COPY of the real FIGURE ???
+
+Virtual Constructor
+----------------
+
+====================================================
+
+Flyweight:
+
+Memory
+
+How can I safe memory ???
+
+Bad News: The Description is very detailed.
+
+Good News: There is an IDEA.
+
+a) I have tons of objects - of the same type.
+
+b) In all of these objects is data, that is repeated in MANY of these objects.
+
+c) IDEA: Can I eliminate the repeated date from these objects and store it elsewhere
+         at a second location ???
+
+         Factorize the objects / data.
+
+=====================================================
+
+Command Pattern:
+
+Short Description:
+
+Encapsulates a method call into an object.
+
+Store these Objects
+
+Execute them later // in a sequential order.
+
+Feature: Undo- / Redo-Buffer functionality
+
+
+Whyyyyyyyyyyyyyyyyyyyyyyy
+
+Example:
+
+Some kind of external events:
+
+Each event has / should be handled by calling a method.
+
+
+
+===================================================
+
+Bank
+====
+
+credit
+
+withdraw
+
+===> Mobile App: ===> Command: Remote Server: When to execute the command in Reality.
+
+
+=================================================
+
+Anti Patterns:
+=============
+
+The Blob (aka Godfather Object)

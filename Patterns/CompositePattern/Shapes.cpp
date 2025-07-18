@@ -14,6 +14,8 @@ struct IShape
     virtual void draw() const = 0;
 };
 
+// Inheritance:  is-a relationship
+
 class Circle : public IShape
 {
 private:
@@ -27,7 +29,9 @@ public:
     }
 };
 
-class Group : public IShape
+// Inheritance:  is-a relationship
+
+class Group : public IShape  // This line can / could be discussed 
 {
 private:
     std::string m_name;
@@ -45,7 +49,7 @@ public:
 
             std::string ident( m_indentation, ' ' );
             std::cout << ident;
-            shape->draw();
+            shape->draw();  // leave OR another sub group
             std::cout << std::endl;
         }
 
@@ -73,11 +77,18 @@ void test_shapes()
     };
     root->push(circle);
 
+
+
+
+
+
     // creating sub group with another two circles
     std::shared_ptr<Group> subgroup = std::make_shared<Group>("Subgroup");
+
     std::shared_ptr<IShape> secondLevelcircle{ 
         std::make_shared<Circle>("First Second Level Circle")
     };
+
     std::shared_ptr<IShape> anotherSecondLevelcircle{ 
         std::make_shared<Circle>("Another Second Level Circle") 
     };
@@ -85,7 +96,7 @@ void test_shapes()
     subgroup->push(anotherSecondLevelcircle);
 
     // adding sub group to root
-    root->push(subgroup);
+    root->push(subgroup);   // heart of the pattern
 
     root->draw();
 }

@@ -5,7 +5,7 @@
 #include "PersonBuilder.h"
 
 PersonBuilder::operator Person&& () {
-    return std::move(m_person);
+    return std::move(m_person);   // move semantics // RValue
 }
 
 PersonBuilder& PersonBuilder::lives(const std::string& country) {

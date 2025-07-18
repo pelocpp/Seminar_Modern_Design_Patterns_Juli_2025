@@ -35,7 +35,7 @@ namespace StrategyRealWorldExampleModern {
     class Circle : public Shape
     {
     private:
-        using DrawStrategy = std::function<void(const Circle&)>;
+        using DrawStrategy = std::function< void (const Circle&) >;
 
     public:
         explicit Circle(double radius, DrawStrategy drawer)
@@ -153,6 +153,23 @@ void test_realworld_example_modern()
     Win32CircleStrategy strategy1;
     Win32RectangleStrategy strategy2;
     Win32CircleStrategy strategy3;
+
+    int data = 123;
+
+    auto lambdaStrategy = [=](const Circle& circle) mutable -> void {
+        std::println("Drawing a Circle using another Framework");
+        data = 345;
+    };
+
+    // creating visual widgets using strategy objects
+    std::unique_ptr<Circle> upcLambda{ std::make_unique<Circle>(
+        3.0, std::move(lambdaStrategy))
+    };
+
+
+    //void operator() (const Circle & circle) const {
+    //    std::println("Drawing a Circle using the Win32 Framework");
+    //}
 
     // creating visual widgets using strategy objects
     std::unique_ptr<Circle> upc{ std::make_unique<Circle>(
