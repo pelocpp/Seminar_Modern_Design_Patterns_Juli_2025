@@ -7,6 +7,7 @@ Peter Loos
 https://github.com/pelocpp
 
 peter.loos@gmx.de
+-----------------
 
 // =================================
 
@@ -437,3 +438,36 @@ Anti Patterns:
 =============
 
 The Blob (aka Godfather Object)
+
+=================================================
+
+Legacy Code
+===========
+
+I don't want to touch it ....
+
+Rescue: Visitor Pattern.
+
+HTML
+
+Markdown
+
+Lists in HTML / Markdown:
+
+Example Markdown:
+
+  * **Client**: Anwender des *Visitor Patterns*. Er verwaltet die Objektstruktur und weist die Objekte innerhalb der Struktur an,
+    wann ein Besucher akzeptiert werden soll.
+  * **ObjectStructure**: Dies ist eine Klasse, die alle Objekte enthält, die besucht werden können.
+    Es bietet einen Mechanismus zum Traversieren aller Elemente.
+    Diese Struktur muss nicht zwingend eine *Collection* sein, es kann irgend eine komplexe Struktur sein, beispielsweise ein *Composite Object*.
+
+Example HTML:
+
+<list>
+
+   <li>Anwender des <i>Visitor Patterns</i>. Er verwaltet die Objektstruktur und weist die Objekte innerhalb der Struktur an,
+    wann ein Besucher akzeptiert werden soll.
+   </li>
+
+</list>

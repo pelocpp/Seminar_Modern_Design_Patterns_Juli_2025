@@ -348,7 +348,8 @@ namespace MotivationVisitor_05_Modern_Cpp
     };
 
     /* ------ std::variant & std::visit -------- */
-    static void clientCode05() {
+    static void clientCode05()
+    {
         HTML hd;
         hd.addToList("This is line");
         std::variant<Markdown, HTML> doc = hd;

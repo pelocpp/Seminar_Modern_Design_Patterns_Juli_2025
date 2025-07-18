@@ -50,8 +50,14 @@ namespace ConceptualExampleChainOfResponsibility {
         {
             if (req.getType() >= 0 && req.getType() < 10) {
                 std::cout << "Concrete Handler A handles: " << req.getParam() << std::endl;
+            
+                // possible - we must meet this decision
+                if (m_successor != nullptr) {
+                    m_successor->handleRequest(req);
+                }
+            
             }
-            else if (m_successor) {
+            else if (m_successor != nullptr) {
                 m_successor->handleRequest(req);
             }
         }
